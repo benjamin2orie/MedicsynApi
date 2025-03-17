@@ -58,7 +58,7 @@
                                         "type":"string",
                                         "required":true,
                                         "required_error":"Time zone is required",
-                                        "example":"West Africa time"
+                                        "example":"Africa/Lagos"
                                     },
 
                                     "phoneNumber":{

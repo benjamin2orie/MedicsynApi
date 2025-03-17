@@ -1,14 +1,32 @@
  import webpush from "web-push"; //remember to install this package later after fixing merge conflict
 import NotificationRepo from "../database/repository/notificationRepo";
+import config from '../config/index';
+
+ 
+//this allows for reading the dotenv file 
+declare global {
+    namespace NodeJS {
+      interface ProcessEnv {
+        VAPID_PUBLIC_KEY: string;
+        VAPID_PRIVATE_KEY: string;
+      }
+    }
+  }
 
 // VAPID Keys
 const vapidKeys = {
-    publicKey: "BCh3RulGWITUMRzHpxZlOQWCdS9-li7XC8rA8J-OESjq99jdHmAzKN2rc6jbn2wbE57FHBQmFpphPxn1SJDXcrs",
-    privateKey: "9Mz4DDXcbV7bdElR8k9FPGn95u0B9k2DSs5kQOdugFs",
-};
+   publicKey: config.VAPID_PUBLIC_KEY,  //this is the vapid puplic key
+    // "BCh3RulGWITUMRzHpxZlOQWCdS9-li7XC8rA8J-OESjq99jdHmAzKN2rc6jbn2wbE57FHBQmFpphPxn1SJDXcrs",
+  privateKey: config.VAPID_PRIVATE_KEY // this is the vapid private key
+
+    // "9Mz4DDXcbV7bdElR8k9FPGn95u0B9k2DSs5kQOdugFs",
+
+}
+    
+
 
 // Setting up VAPID details
- webpush.setVapidDetails("mailto:myuserid@email.com", vapidKeys.publicKey, vapidKeys.privateKey);//remeber to uncomment this after installing the page
+ webpush.setVapidDetails("mailto:myuserid@email.com",vapidKeys.publicKey, vapidKeys.privateKey);//remeber to uncomment this after installing the page
 
 /**
  * Sends push notifications to all subscribed devices for a user.
