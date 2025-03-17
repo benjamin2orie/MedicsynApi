@@ -10,6 +10,11 @@
     },
     "server":[
         {
+            "url": "https://medicsynapi.onrender.com",
+            "description": "Deployement server"
+        },
+        
+        {
             "url":"http://localhost:3000",
             "description":"Developemt server"
         },
